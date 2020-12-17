@@ -1,21 +1,94 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Hello React!</title>
-<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
-<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
-<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+	<title>invitation</title>
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-typer/dist/vue-typer.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./assets/base.css" rel="stylesheet">
+  </head>
+  <body>
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header" hidden>
+					<h5 class="modal-title" id="staticBackdropLabel">title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" style="padding: 0px">
+					<img style="width:100%;" src="./assets/invitation.jpg">
+				</div>
+				<div class="modal-footer" hidden>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+					<button type="button" class="btn btn-primary">Understood</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="wedding">
+		<div class="wedding-editor">
+			<header class="editor-header">
+				<a href="javascript:;" one-link-mark="yes"></a>
+				<a href="javascript:;" class="minimum" one-link-mark="yes"></a>
+				<a href="javascript:;" class="maximum" one-link-mark="yes"></a>
+			</header>
+			<p class="code" id="code">
+				<template v-for="value in content">
+					<li><font v-html="value.head"></font><vue-typer :text="value.text" :repeat='0' :type-delay="value.delay" @completed='onComplete'></vue-typer></li>
+					<div style='text-align:center;' v-if='value.heart' v-on:click='click_heart'><span class='icon_heart'>{{value.heart}}</span></div>
+				</template>	
+			</p>
+		</div>
+	</div>
+  </body>
+  <script>
+	var code_content=[
+		{head:"",text:"Welcome to friend PC 1.0 LTS",delay:30},
+		{head:"<font color='#C0C0C0'>[root@liting ~]# </font>",text:"cd home",delay:20},
+		{head:"<font color='#FF0000'>[root@liting home]# </font>",text:"finished",delay:20},
+		{head:"<font color='#00FFFF'>[root@liting home]# </font>",text:"finished",delay:20},
+		{head:"",text:"..........",delay:200},	
+		{head:"<font color='#00FFFF'>[root@liting home]# </font>",text:"finished",delay:20,heart:'♥'},
+	]
+	var VueTyperPlugin = window.VueTyper.default;
+	Vue.use(VueTyperPlugin);
+	var imgModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+		//backdrop: 'static',//点击背景是否能被关闭
+		keyboard: false
+	});
+	var vm = new Vue({
+		el: '#code',
+		data: {
+		dialog: true,
+		index:0,
+		content: [
+			code_content[0]
+			]
+		},
+		methods: {
+			onComplete: function() {
+				if(++this.index < code_content.length){
+					this.content.push(code_content[this.index]);
+				}
+				document.getElementById("code").scrollIntoView(false);//底部显示
+			},
+			click_heart:function(event){
+				console.log("click heart");
+				imgModal.show();
+			}
+		},
+	})
+	
+	
+	setInterval(function(){
+		//vm.message.push({color:"#BBB",head:"[root@liting home]",cmd:"ls"});
+	},1000);
+  </script>
+  
 
-<div id="example"></div>
-<script type="text/babel">
-ReactDOM.render(
-	<h1>Hello, world!</h1>,
-	document.getElementById('example')
-);
-</script>
-
-</body>
 </html>
