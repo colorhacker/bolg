@@ -100,7 +100,7 @@
 		</div>
 	</div>
 	
-	<audio  controls="controls" autoplay="autoplay" >
+	<audio id="audio_music" controls="controls" hidden>
 		<source src="./music/12081.mp3" type="audio/mpeg">
 	</audio>
   </body>
@@ -218,6 +218,8 @@
 	var dialogModalEl = document.getElementById('dialogModal')
 	dialogModalEl.addEventListener('hidden.bs.modal', function (event) {
 		setTimeout(function(){
+			let audio = document.getElementById("audio_music");
+			audio.play();
 			vm.content.push(code_content[0]);
 		},2000);
 	})
