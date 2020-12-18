@@ -10,17 +10,71 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="./assets/base.css" rel="stylesheet">
+	<link href="./font/bootstrap-icons.css" rel="stylesheet">
   </head>
   <body>
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  
+	<div class="modal fade" id="dialogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">警 告</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" style="font-family:'STHeiti'">
+					<font >我将对你的手机执行代码注入，请点击确认进行操作？</font>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" hidden>退出</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" >确 认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  
+	<div class="modal fade" id="envelopeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" >
 				<div class="modal-header" hidden>
 					<h5 class="modal-title" id="staticBackdropLabel">title</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body" style="padding: 0px">
-					<img style="width:100%;" src="./assets/invitation.jpg">
+				<div class="modal-body" style="padding: 0px;">
+					<!--img style="width:100%;" src="./assets/invitation.jpg"-->
+					<div class="container">
+						<div class="flip"></div>
+						<div class="envelope" onclick="envelopeToggle();"></div>
+						<div class="letter">
+							<img style="width:100%;" src="./assets/invitation.jpg">
+							<div class="text-center" style="vertical-align: middle;float: none;">
+								<div style="margin:0rem;">
+									<img width="64" height="64" src="./assets/bird.svg">
+									<font class="text-muted" style="font-size: 2rem;font-family:'SimHei'">婚 礼 请 柬</font>
+									<img width="64" height="64" src="./assets/bird_t.svg">
+								</div>
+								<div style="margin:1rem;">
+									<h4 style="font-family:'KaiTi'">&nbsp李&nbsp廷<img class='beat_heart' width="24" height="24" src="./assets/heart-red.svg">温婷婷</h4>
+								</div>
+								<div style="margin:1rem;">
+									<h6 style="font-family:'STKaiti'"><img width="24" height="24" src="./assets/alarm.svg" hidden> 2021年1月30号 星期六 12:00点</h6>
+								</div>
+								<div style="margin:1rem;">
+									<h6 style="font-family:'FangSong'"><img width="24" height="24" src="./assets/geo.svg" hidden> 四川省绵阳市涪城区杨家镇双龙山</h6>
+								</div>
+								<div style="margin:1rem;">
+									<font style="font-family:'FangSong'">诚邀您和您的家人参加我们的婚礼</font>
+								</div>
+								<div style="margin:1rem;" hidden>
+									<img class='beat_heart' width="24" height="24" src="./assets/heart-red.svg">
+								</div>
+							</div>
+						</div>
+						<div class="seal" onclick="envelopeToggle();">
+							<img width="48" height="48" src="./assets/award-fill.svg">
+							<img width="48" height="48" src="./assets/bookmark-heart.svg" hidden>
+							<img width="48" height="48" src="./assets/bookmark-heart-fill.svg" hidden>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer" hidden>
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
@@ -45,35 +99,69 @@
 			</p>
 		</div>
 	</div>
+	
+	<audio  controls="controls" autoplay="autoplay" >
+		<source src="./music/12081.mp3" type="audio/mpeg">
+	</audio>
   </body>
   <script>
 	var code_content=[
-		{head:"",text:"Welcome to friend PC 1.0 LTS",delay:30},
-		{head:"<font color='#C0C0C0'>[root@liting ~]# </font>",text:"cd home",delay:20},
-		{head:"<font color='#FF0000'>[root@liting home]# </font>",text:"finished",delay:20},
-		{head:"<font color='#00FFFF'>[root@liting home]# </font>",text:"finished",delay:20},
-		{head:"",text:"..........",delay:200},	
-		{head:"<font color='#00FFFF'>[root@liting home]# </font>",text:"finished",delay:20,heart:'♥'},
+		{head:"",text:"Connection your phone ",delay:50},
+		{head:"",text:"... ",delay:500},
+		{head:"",text:"... ",delay:500},
+		{head:"",text:"Connection Success!",delay:100},
+		{head:"<br>",text:"Welcome to Friend PC 1.0 LTS",delay:50},
+		{head:"<br><font color='Silver'>[root@liting ~]# </font>",text:"cd home ",delay:200},
+		{head:"<font color='Silver'>[root@liting home]# </font>",text:"ls ",delay:500},
+		{head:"<font color='Cyan'>liting wengtingting </font>",text:"",delay:100},
+		{head:"<font color='Silver'>[root@liting home]# </font>",text:"call liting",delay:200},
+		{head:"<font color='Red'>Call liting Fail!! </font>",text:"",delay:100},
+		{head:"<font color='Red'>Call liting Fail!! </font>",text:"",delay:100},
+		{head:"<font color='Red'>Call liting Fail!! </font>",text:"",delay:100},
+		{head:"<font color='Silver'>[root@liting home]# </font>",text:"call wengtingting",delay:200},
+		{head:"<font color='Red'>Call liting Fail!! </font>",text:"",delay:100},
+		{head:"<font color='Red'>Call liting Fail!! </font>",text:"",delay:100},
+		{head:"<font color='Red'>Call liting Fail!! </font>",text:"",delay:100},
+		{head:"<font color='Silver'>[root@liting home]# </font>",text:"liting call wengtingting",delay:200},
+		{head:"<font color='Cyan'>Call Success! </font>",text:"",delay:100},
+		{head:"<font color='Cyan'>Waiting for connection! </font>",text:"...",delay:500},
+		{head:"<font color='Cyan'>Connection Success! </font>",text:"",delay:100},
+		{head:"<font color='Silver'>[root@liting home]# </font>",text:"call letter",delay:200},
+		{head:"<font color='Cyan'>Call Success! </font>",text:"...",delay:200},
+		{head:"<font color='Cyan'>Open now! </font>",text:"...",delay:200},
+		
+		/*{head:"<font color='#00FFFF'>[root@liting home]# </font>",text:"finished",delay:20,heart:" "},*/
 	]
 	var VueTyperPlugin = window.VueTyper.default;
 	Vue.use(VueTyperPlugin);
-	var imgModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+	
+	var dialogModal = new bootstrap.Modal(document.getElementById('dialogModal'), {
+		backdrop: 'static',//点击背景是否能被关闭
+		keyboard: false
+	});
+	var imgModal = new bootstrap.Modal(document.getElementById('envelopeModal'), {
 		//backdrop: 'static',//点击背景是否能被关闭
 		keyboard: false
 	});
+	dialogModal.show();
+	
 	var vm = new Vue({
 		el: '#code',
 		data: {
 		dialog: true,
 		index:0,
 		content: [
-			code_content[0]
+			//code_content[0]
 			]
 		},
 		methods: {
 			onComplete: function() {
 				if(++this.index < code_content.length){
 					this.content.push(code_content[this.index]);
+				}else{
+					setTimeout(function(){
+						imgModal.show();
+					},1000);
 				}
 				document.getElementById("code").scrollIntoView(false);//底部显示
 			},
@@ -83,11 +171,57 @@
 			}
 		},
 	})
+	function envelopeOpen(){
+		let flip = document.querySelector('.flip');
+		let envelope = document.querySelector('.envelope');
+		let letter = document.querySelector('.letter');
+		let seal = document.querySelector('.seal');
+		
+		seal.classList.add('sealOpen');
+		seal.classList.remove('sealClose');
+		flip.classList.add('flipOpen');
+		flip.classList.remove('flipClose');
+		setTimeout(function(){
+			envelope.classList.add('envelopeOpen');
+			envelope.classList.remove('envelopeClose');
+			letter.classList.add('letterOpen');
+			letter.classList.remove('letterClose');
+		},600);
+	}
+	function envelopeClose(){
+		let flip = document.querySelector('.flip');
+		let envelope = document.querySelector('.envelope');
+		let letter = document.querySelector('.letter');
+		let seal = document.querySelector('.seal');
+		
+		letter.classList.remove('letterOpen');
+		letter.classList.add('letterClose');
+		envelope.classList.remove('envelopeOpen');
+		envelope.classList.add('envelopeClose');
+		setTimeout(function(){
+			flip.classList.remove('flipOpen');
+			flip.classList.add('flipClose');
+			seal.classList.remove('sealOpen');
+			seal.classList.add('sealClose');
+		},1000);
+	}
+	let envelopeStatus = false;
+	function envelopeToggle(){
+		if(envelopeStatus){
+			envelopeClose();
+			envelopeStatus = false;
+		}else{
+			envelopeOpen();
+			envelopeStatus = true;
+		}
+	}
+	var dialogModalEl = document.getElementById('dialogModal')
+	dialogModalEl.addEventListener('hidden.bs.modal', function (event) {
+		setTimeout(function(){
+			vm.content.push(code_content[0]);
+		},2000);
+	})
 	
-	
-	setInterval(function(){
-		//vm.message.push({color:"#BBB",head:"[root@liting home]",cmd:"ls"});
-	},1000);
   </script>
   
 

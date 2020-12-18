@@ -2,7 +2,7 @@ html, body {
 	height: 100%;
 }
 body, button, input, select, textarea {
-	font-family: "NotoSans", "NotoSansUI", "PingFang SC", "HiraginoSansGB-W3", "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "NotoSans", "NotoSansUI", "PingFang SC", "HiraginoSansGB-W3", "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif , 'KaiTi';
 	font-size: 14px;
 	font-weight: normal;
 	-webkit-font-smoothing: antialiased;
@@ -62,7 +62,7 @@ body, button, input, select, textarea {
 
 .wedding-editor p.code {
     margin: 0;
-    color: #C0C0C0;
+    color: Silver;
     line-height: 1.2;
     font-family: 'Roboto Mono', 'Menlo', 'Monaco', Courier, monospace !important;
     font-weight: 500 !important;
@@ -76,58 +76,200 @@ p {
     margin-inline-end: 0px;
 }
 
-li{
-	color: #C0C0C0;
+li {
+	color: Silver;
 	margin:0px;
 	padding:0px;
 	list-style:none;
-	}
+}
 	
 .vue-typer {
   font-family: 'Roboto Mono', 'Menlo', 'Monaco', Courier, monospace !important;
 }
 .vue-typer .custom.char {
-  color: #C0C0C0;
+  color: Silver;
 }
 .vue-typer .custom.char.selected {
   background-color: #264F78;
 }
 .vue-typer .custom.caret {
   width: 10px;
-  background-color: #C0C0C0;
+  background-color: Silver;
+}
+
+.beat_heart{
+	animation: blink 1s ease-in infinite;
 }
 
 .icon_heart {
-  background: url(heart-fill.svg);
-  background-size: 3rem 3rem;
-  width: 6rem;
-  height: 6rem;
-  border: none;
-  display:inline-block;
-  padding: 0.8rem 0;
-  text-align: center;
-  animation: blink 2s ease-in infinite;
+	background: url(heart-red.svg);
+	background-size: 3rem 3rem;
+	width: 6rem;
+	height: 6rem;
+	border: none;
+	display:inline-block;
+	padding: 0.8rem 0;
+	text-align: center;
+	animation: blink 1.5s ease-in infinite;
 }
 @keyframes blink {
-  0%   { opacity: 1 ;transform: scale(0);}
-  50%  { opacity: 0 ;transform: scale(2);}
-  100% { opacity: 0 ;transform: scale(0);}
+	0%   { opacity: 1 ;transform: scale(0);}
+	100% { opacity: 0 ;transform: scale(2);}
+}
+.icon_heart:nth-child(2){
+    animation-delay:.3s;
+    -webkit-animation-delay:.3s
+}
+.icon_heart:nth-child(3){
+    animation-delay:.6s;
+    -webkit-animation-delay:.6s
 }
 
-/*
-.wedding-editor pre {
-    margin: 0;
-    white-space: pre-wrap;
+/*信封特效*/
+.container {
+  position: absolute;
+  height: 100%;
+  width: 95%;
 }
-.wedding-editor pre code {
-    white-space: pre-wrap;
-    word-break: break-all;
-    font-size: 16px!important;
-    margin: 0;
-    color: #C0C0C0;
-    line-height: 1.2;
-    font-family: 'Roboto Mono', 'Menlo', 'Monaco', Courier, monospace !important;
-    font-weight: 500 !important;
-    background: transparent;
+.flip {
+	position:absolute;
+	width: 100%;
+	border-style:solid;
+	border-width: 8rem;
+	border-color: #c94548 transparent transparent transparent;
+	z-index: 10;
 }
-*/
+.envelope {
+	position: absolute;
+	top: 0rem;
+	width: 100%;
+	border-style: solid;
+	border-width: 8rem;
+	border-color: transparent #fa565a #ed4c50 #fa565a;
+	z-index: 10;
+}
+.letter {
+	position:absolute;
+	top: 0rem;
+	width: 100%;
+	height: 16rem;
+	background: #ddd;
+	overflow: hidden;
+	z-index: 8;
+}
+
+.seal {
+	position:absolute;
+	top:7rem;
+	width: 100%;
+	height: 16rem;
+	text-align: center;
+	z-index: 12;
+}
+
+.sealOpen {
+  animation: sealOpen 0.4s ease-in forwards;
+}
+.sealClose {
+  animation: sealClose 0.4s ease-in forwards;
+}
+@keyframes sealOpen {
+  0% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	opacity: 1;
+  }
+  100% {
+    transform: rotateX(180deg);
+    transform-origin: center top;
+	opacity: 0;
+  }
+}
+@keyframes sealClose {
+  0% {
+    transform: rotateX(180deg);
+    transform-origin: center top;
+	opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	opacity: 1;
+  }
+}
+
+.letterOpen {
+	top: -20rem;
+	height: 32rem;
+	transition: 1s ease-in;
+}
+.letterClose {
+	top: 0rem;
+	height: 16rem;
+	transition: 1s ease-in;
+}
+
+.flipOpen {
+  animation: flipOpen 0.4s ease-in forwards;
+}
+.flipClose {
+  animation: flipClose 0.4s ease-in forwards;
+}
+@keyframes flipOpen {
+  0% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	opacity: 1;
+  }
+  100% {
+    transform: rotateX(180deg);
+    transform-origin: center top;
+	opacity: 0;
+  }
+}
+@keyframes flipClose {
+  0% {
+    transform: rotateX(180deg);
+    transform-origin: center top;
+	opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	opacity: 1;
+  }
+}
+
+.envelopeOpen {
+  animation: envelopeOpen 0.4s ease-in forwards;
+}
+.envelopeClose {
+  animation: envelopeClose 0.4s ease-in forwards;
+}
+@keyframes envelopeOpen {
+  0% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	top: 0rem;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	top:3rem;
+  }
+}
+@keyframes envelopeClose {
+  0% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	top: 3rem;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: center top;
+	top: 0rem;
+  }
+}
+
+
+/*信封特效*/
