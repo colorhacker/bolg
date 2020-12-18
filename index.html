@@ -158,6 +158,7 @@
 			onComplete: function() {
 				if(++this.index < code_content.length){
 					this.content.push(code_content[this.index]);
+					document.getElementById("audio_music").play();
 				}else{
 					setTimeout(function(){
 						imgModal.show();
@@ -218,8 +219,7 @@
 	var dialogModalEl = document.getElementById('dialogModal')
 	dialogModalEl.addEventListener('hidden.bs.modal', function (event) {
 		setTimeout(function(){
-			let audio = document.getElementById("audio_music");
-			audio.play();
+			document.getElementById("audio_music").play();
 			vm.content.push(code_content[0]);
 		},2000);
 	})
