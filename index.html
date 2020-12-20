@@ -218,15 +218,15 @@
 	var dialogModalEl = document.getElementById('dialogModal')
 	dialogModalEl.addEventListener('hidden.bs.modal', function (event) {
 		setTimeout(function(){
-			playmusic();
+			playmusic("didi.mp3");
 			vm.content.push(code_content[0]);
 		},2000);
 	})
 	
 
-	function playmusic(){
+	function playmusic(music){
 		var audio = document.getElementById("audio_music");
-		audio.src = "./music/12081.mp3";
+		audio.src = `./music/${music}`;
 		audio.play();
 		/*//播放(继续播放)
 		audio.play();
