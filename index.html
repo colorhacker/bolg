@@ -56,10 +56,10 @@
 									<h4 style="font-family:'KaiTi'">&nbsp李&nbsp廷<img class='beat_heart' width="24" height="24" src="./assets/heart-red.svg">温婷婷</h4>
 								</div>
 								<div style="margin:1rem;">
-									<h6 style="font-family:'STKaiti'"><img width="24" height="24" src="./assets/alarm.svg" hidden> 2021年1月30号 星期六 12:00点</h6>
+									<h6 style="font-family:'STKaiti'"><img width="24" height="24" src="./assets/alarm.svg" hidden> 2021年1月30号 星期六 11:00点</h6>
 								</div>
 								<div style="margin:1rem;">
-									<h6 style="font-family:'FangSong'"><img width="24" height="24" src="./assets/geo.svg" hidden> 四川省绵阳市涪城区杨家镇双龙山</h6>
+									<h6 style="font-family:'FangSong'"><img width="24" height="24" src="./assets/geo.svg" hidden> 四川省绵阳市涪城区杨家镇国际香草园内</h6>
 								</div>
 								<div style="margin:1rem;">
 									<font style="font-family:'FangSong'">诚邀您和您的家人参加我们的婚礼</font>
@@ -218,7 +218,6 @@
 			envelopeStatus = true;
 		}
 	}
-	
 	new Vue({
 		el: '#dialogButton',
 		methods: {
@@ -244,6 +243,9 @@
 	function closemusic(){
 		var audio = document.getElementById("audio_music");
 		audio.pause();
+	}
+	window.onload=function(){
+		dialogModal.show();
 	}
   </script>
   
