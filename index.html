@@ -16,17 +16,17 @@
   
 	<div class="modal fade" id="dialogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
+			<div class="modal-content"  id="dialogButton">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">警 告</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<button type="button" class="btn-close" aria-label="Close" v-on:click='confirm_quit'></button>
 				</div>
 				<div class="modal-body" style="font-family:'STHeiti'">
 					<font >我将对你的手机执行代码注入，请点击确认进行操作？</font>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" hidden>退出</button>
-					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" >确 认</button>
+				<div class="modal-footer" >
+					<button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" hidden>退出</button>
+					<button type="button" class="btn btn-primary" v-on:click='confirm_enter'>确 认</button>
 				</div>
 			</div>
 		</div>
@@ -209,20 +209,31 @@
 	function envelopeToggle(){
 		if(envelopeStatus){
 			envelopeClose();
+			closemusic();
 			envelopeStatus = false;
 		}else{
 			envelopeOpen();
+			playmusic("Time To Love-October.mp3");
 			envelopeStatus = true;
 		}
 	}
-	var dialogModalEl = document.getElementById('dialogModal')
-	dialogModalEl.addEventListener('hidden.bs.modal', function (event) {
-		setTimeout(function(){
-			playmusic("didi.mp3");
-			vm.content.push(code_content[0]);
-		},2000);
-	})
 	
+	new Vue({
+		el: '#dialogButton',
+		methods: {
+			confirm_enter:function(event){
+			dialogModal.hide();
+			setTimeout(function(){
+				playmusic("didi.mp3");
+				vm.content.push(code_content[0]);
+			},2000);
+			},
+			confirm_quit:function(event){
+				window.location.href="about:blank";
+				window.close(); 
+			}
+		}
+	});
 
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
@@ -238,6 +249,11 @@
 		//重新播放
 		audio.currentTime = 0;
 		audio.play();*/
+	}
+	function closemusic(music){
+		var audio = document.getElementById("audio_music");
+		audio.src = `./music/${music}`;
+		audio.pause();
 	}
   </script>
   
