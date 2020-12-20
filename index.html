@@ -239,20 +239,9 @@
 		var audio = document.getElementById("audio_music");
 		audio.src = `./music/${music}`;
 		audio.play();
-		/*//播放(继续播放)
-		audio.play();
-		//暂停
-		audio.pause();
-		//停止
-		audio.pause();
-		audio.currentTime = 0;
-		//重新播放
-		audio.currentTime = 0;
-		audio.play();*/
 	}
-	function closemusic(music){
+	function closemusic(){
 		var audio = document.getElementById("audio_music");
-		audio.src = `./music/${music}`;
 		audio.pause();
 	}
   </script>
