@@ -101,13 +101,12 @@
 	</div>
 	
 	<audio id="audio_music" controls="controls" hidden>
-		<source src="./music/12081.mp3" type="audio/mpeg">
+		<!--source src="./music/12081.mp3" type="audio/mpeg"-->
 	</audio>
   </body>
   <script>
 	var code_content=[
 		{head:"",text:"Connection your phone ",delay:50},
-		{head:"",text:"... ",delay:500},
 		{head:"",text:"... ",delay:500},
 		{head:"",text:"Connection Success!",delay:100},
 		{head:"<br>",text:"Welcome to Friend PC 1.0 LTS",delay:50},
@@ -219,11 +218,27 @@
 	var dialogModalEl = document.getElementById('dialogModal')
 	dialogModalEl.addEventListener('hidden.bs.modal', function (event) {
 		setTimeout(function(){
-			document.getElementById("audio_music").play();
+			playmusic();
 			vm.content.push(code_content[0]);
 		},2000);
 	})
 	
+
+	function playmusic(){
+		var audio = document.getElementById("audio_music");
+		audio.src = "./music/12081.mp3";
+		audio.play();
+		/*//播放(继续播放)
+		audio.play();
+		//暂停
+		audio.pause();
+		//停止
+		audio.pause();
+		audio.currentTime = 0;
+		//重新播放
+		audio.currentTime = 0;
+		audio.play();*/
+	}
   </script>
   
 
