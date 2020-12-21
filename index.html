@@ -102,10 +102,12 @@
 			</p>
 		</div>
 	</div>
+	
+
   </body>
   <script> 
 	var code_content=[
-		{head:"",text:"connect your phone",delay:70},
+		/*{head:"",text:"connect your phone",delay:70},
 		{head:"wait connect ",text:"...",delay:600},
 		{head:"connect success!",text:" ",delay:300},
 		{head:"<br>",text:"Welcome to Friend PC 1.0 LTS",delay:50},
@@ -125,10 +127,33 @@
 		{head:"<font color='Silver'>[root ~]# </font>",text:"increase love ",delay:200},
 		{head:"<font color='Cyan'>increase success! </font>",text:" ",delay:500},
 		{head:"<font color='Silver'>[root ~]# </font>",text:"view them ",delay:100},
+		{head:"<font color='Cyan'>loading </font>",text:"[================] 100%",delay:180},
+		{head:"<font color='Cyan'>opening </font>",text:"[================] 100%",delay:120},*/
 		
-		{head:"<font color='Cyan'>loading </font>",text:"[================] 100%",delay:200},
-		{head:"<font color='Cyan'>opening </font>",text:"[================] 100%",delay:200},
-		
+		{head:"",text:"正在连接你的手机",delay:70},
+		{head:"等待连接 ",text:"...",delay:600},
+		{head:"连接成功!",text:" ",delay:300},
+		{head:"<br>",text:"Welcome to Friend PC 1.0 LTS",delay:50},
+		{head:"<br>",text:"",delay:50},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"创建一个home ",delay:100},
+		{head:"<font color='Cyan'>创建完成!!</font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 LT 和 WTT 代码",delay:200},
+		{head:"<font color='Silver'>添加代码完成!!</font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 sadness 条件",delay:200},
+		{head:"<font color='Red'>添加条件失败!! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 happiness 条件",delay:200},
+		{head:"<font color='Cyan'>添加条件完成! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"运行代码 ",delay:200},
+		{head:"<font color='Red'>运行失败!条件不够!</font>",text:" ",delay:200},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 money 条件",delay:200},
+		{head:"<font color='Red'>错误的 money 条件!! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 love 条件",delay:200},
+		{head:"<font color='Cyan'>添加条件完成! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"运行代码 ",delay:100},
+		{head:"<font color='Cyan'>编译代码 </font>",text:"[================] 100%",delay:180},
+		{head:"<font color='Cyan'>运行代码 </font>",text:"[================] 100%",delay:100},
+		{head:"<font color='Cyan'>创建信封 </font>",text:"[================] 100%",delay:50},
+		{head:"<font color='Cyan'>打开信封 </font>",text:"[================] 100%",delay:50},
 		/*{head:"<font color='#00FFFF'>[root@liting ~]# </font>",text:"finished",delay:20,heart:" "},*/
 	]
 	var VueTyperPlugin = window.VueTyper.default;
@@ -142,8 +167,7 @@
 		backdrop: 'static',//点击背景是否能被关闭
 		keyboard: false
 	});
-	
-	
+
 	var vm = new Vue({
 		el: '#code',
 		data: {
@@ -219,11 +243,8 @@
 	}
 	function confirm_enter(){
 		dialogModal.hide();
-		
-		setTimeout(function(){
-			playmusic("didi.mp3");
 		vm.content.push(code_content[0]);
-		},2000);
+		playmusic("didi.mp3");
 	}
 	function confirm_quit(){
 		window.location.href="about:blank";
@@ -239,16 +260,14 @@
 		audio.pause();
 	}
 	window.onload = function(){
-		dialogModal.show();
+		setTimeout(function(){
+			dialogModal.show();
+		},2000);
 	}
 	function music_load_complete(){
 		console.log("music load complete");
 		//alert("music_load_complete");
 	}
-	
-	setTimeout(function(){
-		dialogModal.show();
-	},2000);
   </script>
   
 
