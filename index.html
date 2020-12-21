@@ -181,8 +181,8 @@
 			onComplete: function() {
 				if(++this.index < code_content.length){
 					this.content.push(code_content[this.index]);
-					//document.getElementById("audio_music").play();
-					playmusic("didi.mp3");
+					document.getElementById("audio_music").play();
+					//playmusic("didi.mp3");
 				}else{
 					setTimeout(function(){
 						imgModal.show();
