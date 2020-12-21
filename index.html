@@ -221,11 +221,11 @@
 		el: '#dialogButton',
 		methods: {
 			confirm_enter:function(event){
-			dialogModal.hide();
-			setTimeout(function(){
-				playmusic("didi.mp3");
-				vm.content.push(code_content[0]);
-			},2000);
+				setTimeout(function(){
+					playmusic("didi.mp3");
+					vm.content.push(code_content[0]);
+					dialogModal.hide();
+				},2000);
 			},
 			confirm_quit:function(event){
 				window.location.href="about:blank";
@@ -236,7 +236,6 @@
 
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
-		//audio.src = `./music/${music}`;
 		audio.src = `./music/${music}`;
 		audio.play();
 	}
