@@ -22,14 +22,14 @@
 			<div class="modal-content"  id="dialogButton">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">警 告</h5>
-					<button type="button" class="btn-close" aria-label="Close" onclick='confirm_quit();'></button>
+					<button type="button" class="btn-close" aria-label="Close" v-on:click='confirm_quit'></button>
 				</div>
 				<div class="modal-body" style="font-family:'STHeiti'">
 					<font >我将连接你的手机执行程序，请点击确认进行操作？</font>
 				</div>
 				<div class="modal-footer" >
 					<button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" hidden>退出</button>
-					<button type="button" class="btn btn-primary" onclick='confirm_enter();'>确 认</button>
+					<button type="button" class="btn btn-primary" v-on:click='confirm_enter'>确 认</button>
 				</div>
 			</div>
 		</div>
@@ -131,7 +131,7 @@
 		{head:"<font color='Cyan'>opening </font>",text:"[================] 100%",delay:120},*/
 		
 		{head:"",text:"正在连接你的手机",delay:70},
-		{head:"等待连接 ",text:"...",delay:600},
+		{head:"等待连接 ",text:"...",delay:800},
 		{head:"连接成功!",text:" ",delay:300},
 		{head:"<br>",text:"Welcome to Friend PC 1.0 LTS",delay:50},
 		{head:"<br>",text:"",delay:50},
@@ -241,7 +241,21 @@
 			envelopeStatus = true;
 		}
 	}
-	function confirm_enter(){
+	new Vue({
+		el: '#dialogButton',
+		methods: {
+			confirm_enter: function(){
+				dialogModal.hide();
+				vm.content.push(code_content[0]);
+				playmusic("didi.mp3");
+			},
+			confirm_quit: function(){
+				window.location.href="about:blank";
+				window.close(); 
+			}
+		}
+	});
+	/*function confirm_enter(){
 		dialogModal.hide();
 		vm.content.push(code_content[0]);
 		playmusic("didi.mp3");
@@ -249,7 +263,7 @@
 	function confirm_quit(){
 		window.location.href="about:blank";
 		window.close(); 
-	}
+	}*/
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
 		audio.src = `./music/${music}`;
