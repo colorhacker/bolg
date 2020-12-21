@@ -13,8 +13,8 @@
 	<link href="./font/bootstrap-icons.css" rel="stylesheet">
   </head>
   <body>
-	<audio id="audio_music" controls="controls" onprogress="music_load_complete()" hidden>
-		<!--source src="./music/didi.mp3" type="audio/mpeg"-->
+	<audio id="audio_music" preload="auto" oncanplay="music_load_complete()" autobuffer hidden>
+		<source src="./music/didi.mp3" type="audio/mpeg">
 		<source src="./music/Time To Love-October fast.mp3" type="audio/mpeg">
 	</audio>  
 	<div class="modal fade" id="dialogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -105,30 +105,31 @@
   </body>
   <script> 
 	var code_content=[
-		{head:"",text:"Connection your phone ",delay:50},
-		{head:"",text:"... ",delay:500},
-		{head:"",text:"Connection Success!",delay:100},
+		{head:"",text:"connect your phone",delay:70},
+		{head:"wait connect ",text:"...",delay:600},
+		{head:"Connect success!",text:" ",delay:300},
 		{head:"<br>",text:"Welcome to Friend PC 1.0 LTS",delay:50},
-		{head:"<br><font color='Silver'>[root@liting ~]# </font>",text:"cd home ",delay:200},
-		{head:"<font color='Silver'>[root@liting home]# </font>",text:"ls ",delay:500},
-		{head:"<font color='Cyan'>liting wengtingting </font>",text:"",delay:100},
-		{head:"<font color='Silver'>[root@liting home]# </font>",text:"call liting",delay:200},
-		{head:"<font color='Red'>Call Fail!! </font>",text:"",delay:100},
-		{head:"<font color='Red'>Call Fail!! </font>",text:"",delay:100},
-		{head:"<font color='Red'>Call Fail!! </font>",text:"",delay:100},
-		{head:"<font color='Silver'>[root@liting home]# </font>",text:"call wengtingting",delay:200},
-		{head:"<font color='Red'>Call Fail!! </font>",text:"",delay:100},
-		{head:"<font color='Red'>Call Fail!! </font>",text:"",delay:100},
-		{head:"<font color='Red'>Call Fail!! </font>",text:"",delay:100},
-		{head:"<font color='Silver'>[root@liting home]# </font>",text:"liting call wengtingting",delay:200},
-		{head:"<font color='Cyan'>Call Success! </font>",text:"",delay:100},
-		{head:"<font color='Cyan'>Waiting for connection! </font>",text:"...",delay:500},
-		{head:"<font color='Cyan'>Connection Success! </font>",text:"",delay:100},
-		{head:"<font color='Silver'>[root@liting home]# </font>",text:"call letter",delay:200},
-		{head:"<font color='Cyan'>Call Success! </font>",text:"...",delay:200},
-		{head:"<font color='Cyan'>Open now! </font>",text:"...",delay:200},
+		{head:"<br>",text:"",delay:50},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"create a home ",delay:100},
+		{head:"<font color='Cyan'>created!!</font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"join LT and WTT ",delay:200},
+		{head:"<font color='Silver'>join completed!!</font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"increase sadness ",delay:200},
+		{head:"<font color='Red'>increase failed!! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"increase happiness ",delay:200},
+		{head:"<font color='Cyan'>increase complete! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"view them ",delay:200},
+		{head:"<font color='Red'>view failed!need other things!</font>",text:" ",delay:200},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"increase money ",delay:200},
+		{head:"<font color='Red'>not money!! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"increase love ",delay:200},
+		{head:"<font color='Cyan'>increase success! </font>",text:" ",delay:500},
+		{head:"<font color='Silver'>[root ~]# </font>",text:"view them ",delay:100},
 		
-		/*{head:"<font color='#00FFFF'>[root@liting home]# </font>",text:"finished",delay:20,heart:" "},*/
+		{head:"<font color='Cyan'>loading </font>",text:"[================] 100%",delay:200},
+		{head:"<font color='Cyan'>opening </font>",text:"[================] 100%",delay:200},
+		
+		/*{head:"<font color='#00FFFF'>[root@liting ~]# </font>",text:"finished",delay:20,heart:" "},*/
 	]
 	var VueTyperPlugin = window.VueTyper.default;
 	Vue.use(VueTyperPlugin);
@@ -138,7 +139,7 @@
 		keyboard: false
 	});
 	var imgModal = new bootstrap.Modal(document.getElementById('envelopeModal'), {
-		//backdrop: 'static',//点击背景是否能被关闭
+		backdrop: 'static',//点击背景是否能被关闭
 		keyboard: false
 	});
 	dialogModal.show();
@@ -235,6 +236,7 @@
 
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
+		//audio.src = `./music/${music}`;
 		audio.src = `./music/${music}`;
 		audio.play();
 	}
@@ -246,7 +248,8 @@
 		dialogModal.show();
 	}
 	function music_load_complete(){
-		alert("music_load_complete");
+		console.log("music load complete");
+		//alert("music_load_complete");
 	}
   </script>
   
