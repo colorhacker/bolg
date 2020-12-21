@@ -13,7 +13,10 @@
 	<link href="./font/bootstrap-icons.css" rel="stylesheet">
   </head>
   <body>
-  
+	<audio id="audio_music" controls="controls" oncanplay="music_load()" hidden>
+		<source src="./music/didi.mp3" type="audio/mpeg">
+		<source src="./music/Time To Love-October fast.mp3" type="audio/mpeg">
+	</audio>  
 	<div class="modal fade" id="dialogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content"  id="dialogButton">
@@ -99,13 +102,13 @@
 			</p>
 		</div>
 	</div>
-	
-	<audio id="audio_music" controls="controls" hidden>
-		<source src="./music/didi.mp3" type="audio/mpeg">
-		<source src="./music/Time To Love-October fast.mp3" type="audio/mpeg">
-	</audio>
   </body>
   <script>
+  
+	  function music_load(){
+		console.log("music oncanplay");
+	  }
+	  
 	var code_content=[
 		{head:"",text:"Connection your phone ",delay:50},
 		{head:"",text:"... ",delay:500},
