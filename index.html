@@ -181,7 +181,8 @@
 			onComplete: function() {
 				if(++this.index < code_content.length){
 					this.content.push(code_content[this.index]);
-					document.getElementById("audio_music").play();
+					//document.getElementById("audio_music").play();
+					playmusic("didi.mp3");
 				}else{
 					setTimeout(function(){
 						imgModal.show();
@@ -247,9 +248,7 @@
 			confirm_enter: function(){
 				dialogModal.hide();
 				playmusic("didi.mp3");
-				setTimeout(function(){
-					vm.content.push(code_content[0]);
-				},500);
+				vm.content.push(code_content[0]);
 			},
 			confirm_quit: function(){
 				window.location.href="about:blank";
@@ -257,15 +256,6 @@
 			}
 		}
 	});
-	/*function confirm_enter(){
-		dialogModal.hide();
-		vm.content.push(code_content[0]);
-		playmusic("didi.mp3");
-	}
-	function confirm_quit(){
-		window.location.href="about:blank";
-		window.close(); 
-	}*/
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
 		audio.src = `./music/${music}`;
