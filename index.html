@@ -229,16 +229,9 @@
 		window.close(); 
 	}
 	function playmusic(music){
-		/*var audio = document.getElementById("audio_music");
-		audio.src = `./music/${music}`;
-		audio.play();*/
-		const soundEffect = new Audio();
-		// onClick of first interaction on page before I need the sounds
-		soundEffect.play();
-		// later on when you actually want to play a sound at any point without user interaction
-		soundEffect.src = `./music/${music}`;
-		soundEffect.play();
-		
+		var audio = document.getElementById("audio_music");
+		//audio.src = `./music/${music}`;
+		audio.play();
 	}
 	function closemusic(){
 		var audio = document.getElementById("audio_music");
@@ -249,7 +242,7 @@
 	}
 	function music_load_complete(){
 		console.log("music load complete");
-		alert("music_load_complete");
+		//alert("music_load_complete");
 	}
   </script>
   
