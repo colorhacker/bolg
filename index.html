@@ -15,7 +15,7 @@
   <body>
 	<audio id="audio_music" preload="auto" oncanplay="music_load_complete()" autobuffer hidden>
 		<source src="./music/didi.mp3" type="audio/mpeg">
-		<!--source src="./music/Time To Love-October fast.mp3" type="audio/mpeg"-->
+		<source src="./music/Time To Love-October fast.mp3" type="audio/mpeg">
 	</audio>  
 	<div class="modal fade" id="dialogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
@@ -213,27 +213,11 @@
 			envelopeStatus = false;
 		}else{
 			envelopeOpen();
-			playmusic("Time To Love-October fast.mp3");
+			//playmusic("Time To Love-October fast.mp3");
+			playmusic("didi.mp3");
 			envelopeStatus = true;
 		}
 	}
-	/*new Vue({
-		el: '#dialogButton',
-		methods: {
-			confirm_enter:function(event){
-				dialogModal.hide();
-				setTimeout(function(){
-					playmusic("didi.mp3");
-					vm.content.push(code_content[0]);
-				},2000);
-			},
-			confirm_quit:function(event){
-				window.location.href="about:blank";
-				window.close(); 
-			}
-		}
-	});*/
-	
 	function confirm_enter(){
 		dialogModal.hide();
 		setTimeout(function(){
