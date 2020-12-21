@@ -142,7 +142,7 @@
 		backdrop: 'static',//点击背景是否能被关闭
 		keyboard: false
 	});
-	dialogModal.show();
+	
 	
 	var vm = new Vue({
 		el: '#code',
@@ -219,9 +219,10 @@
 	}
 	function confirm_enter(){
 		dialogModal.hide();
+		playmusic("didi.mp3");
+		vm.content.push(code_content[0]);
 		setTimeout(function(){
-			playmusic("didi.mp3");
-			vm.content.push(code_content[0]);
+			
 		},2000);
 	}
 	function confirm_quit(){
@@ -230,7 +231,7 @@
 	}
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
-		//audio.src = `./music/${music}`;
+		audio.src = `./music/${music}`;
 		audio.play();
 	}
 	function closemusic(){
@@ -244,6 +245,10 @@
 		console.log("music load complete");
 		//alert("music_load_complete");
 	}
+	
+	setTimeout(function(){
+		dialogModal.show();
+	},2000);
   </script>
   
 
