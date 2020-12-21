@@ -246,8 +246,10 @@
 		methods: {
 			confirm_enter: function(){
 				dialogModal.hide();
-				vm.content.push(code_content[0]);
 				playmusic("didi.mp3");
+				setTimeout(function(){
+					vm.content.push(code_content[0]);
+				},500);
 			},
 			confirm_quit: function(){
 				window.location.href="about:blank";
