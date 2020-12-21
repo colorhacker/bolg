@@ -22,14 +22,14 @@
 			<div class="modal-content"  id="dialogButton">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">警 告</h5>
-					<button type="button" class="btn-close" aria-label="Close" v-on:click='confirm_quit'></button>
+					<button type="button" class="btn-close" aria-label="Close" onclick='confirm_quit();'></button>
 				</div>
 				<div class="modal-body" style="font-family:'STHeiti'">
 					<font >我将连接你的手机执行程序，请点击确认进行操作？</font>
 				</div>
 				<div class="modal-footer" >
 					<button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" hidden>退出</button>
-					<button type="button" class="btn btn-primary" onclick='confirm_enter()'>确 认</button>
+					<button type="button" class="btn btn-primary" onclick='confirm_enter();'>确 认</button>
 				</div>
 			</div>
 		</div>
@@ -217,7 +217,7 @@
 			envelopeStatus = true;
 		}
 	}
-	new Vue({
+	/*new Vue({
 		el: '#dialogButton',
 		methods: {
 			/*confirm_enter:function(event){
@@ -232,7 +232,7 @@
 				window.close(); 
 			}
 		}
-	});
+	});*/
 	
 	function confirm_enter(){
 		dialogModal.hide();
@@ -240,6 +240,10 @@
 			playmusic("didi.mp3");
 			vm.content.push(code_content[0]);
 		},2000);
+	}
+	function confirm_quit(){
+		window.location.href="about:blank";
+				window.close(); 
 	}
 	function playmusic(music){
 		var audio = document.getElementById("audio_music");
