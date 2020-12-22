@@ -251,7 +251,7 @@
 		setTimeout(function(){
 			dialogModal.show();
 			//imgModal.show();
-			add_snow_scene(200);//添加下雪
+			add_snow_scene(50);//添加下雪
 		},2000);
 	}
 	function music_load_complete(){
@@ -261,7 +261,16 @@
 	function add_snow_scene(count){
 		var scene = document.getElementById("snow_scene")
 		for(let i=0;i<count;i++){
-			scene.innerHTML=scene.innerHTML + "<div class='snow'>&#10052;</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>❄️</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>❄️</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>❤️</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>🧡</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>💛</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>💚</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>💙</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>💜</div>";
+			scene.innerHTML=scene.innerHTML + "<div class='snow'>🤎</div>";
+			//scene.innerHTML=scene.innerHTML + "<div class='snow'>🪂</div>";
 		}
 	}
   </script>
