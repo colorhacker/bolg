@@ -8,6 +8,8 @@
 		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 		<script src="https://unpkg.com/vue-typer/dist/vue-typer.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+		
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="./assets/base.css" rel="stylesheet">
 		<link href="./assets/snow.css" rel="stylesheet">
@@ -62,7 +64,7 @@
 									<h4 style="font-family:'KaiTi'">&nbsp李&nbsp廷<img class='beat_heart' width="24" height="24" src="./assets/heart-red.svg">温婷婷</h4>
 								</div>
 								<div style="margin:1rem;">
-									<h6 style="font-family:'STKaiti'"><img width="24" height="24" src="./assets/alarm.svg" hidden> 2021年1月30号 星期六 11:00点</h6>
+									<h6 style="font-family:'STKaiti'"><img width="24" height="24" src="./assets/alarm.svg" hidden> 2021年1月30号 星期六 10:00点</h6>
 								</div>
 								<div style="margin:1rem;">
 									<h6 style="font-family:'FangSong'"><img width="24" height="24" src="./assets/geo.svg" hidden> 四川省绵阳市涪城区杨家镇国际香草园内</h6>
@@ -111,28 +113,39 @@
   <script> 
 	var code_content=[
 		{head:"",text:"正在连接你的手机",delay:70},
-		{head:"等待连接 ",text:"...",delay:800},
+		{head:`ip:[${returnCitySN['cip']}],${returnCitySN['cname']}`,text:" ",delay:300},
+		{head:`等待连接 `,text:"...",delay:800},
 		{head:"连接成功!",text:" ",delay:300},
 		{head:"<br>",text:"Welcome to Friend 1.0 LTS",delay:50},
 		{head:"<br>",text:"",delay:50},
-		{head:"<font color='Silver'>[~]# </font>",text:"创建一个 home 脚本"+navigator.appName,delay:100},
-		{head:"<font color='Cyan'>创建完成!!</font>",text:" ",delay:100},
-		{head:"<font color='Silver'>[~]# </font>",text:"添加 LT 和 WTT 代码",delay:200},
-		{head:"<font color='Silver'>添加代码完成!!</font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[~]# </font>",text:"添加 sadness 条件",delay:200},
-		{head:"<font color='Red'>添加条件失败!! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[~]# </font>",text:"添加 happiness 条件",delay:200},
-		{head:"<font color='Cyan'>添加条件完成! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[~]# </font>",text:"运行代码 home ",delay:200},
-		{head:"<font color='Red'>运行失败!条件不够!</font>",text:" ",delay:200},
-		{head:"<font color='Silver'>[~]# </font>",text:"添加 much money 条件",delay:200},
-		{head:"<font color='Red'>错误的 money 条件!! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[~]# </font>",text:"添加 love 条件",delay:200},
-		{head:"<font color='Cyan'>添加条件完成! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[~]# </font>",text:"运行代码 ",delay:100},
-		{head:"<font color='Cyan'>编译代码 </font>",text:"[=============] 100%",delay:60},
-		{head:"<font color='Cyan'>运行代码 </font>",text:"[=============] 100%",delay:60},
-		{head:"<font color='Cyan'>创建信封 </font>",text:"[=============] 100%",delay:180},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"wget http://love.com/love.sh ",delay:50},
+		{head:"<font color='Cyan'>下载代码 </font>",text:"[=================>] 100% 1.30KBtye",delay:50},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"write 'U+1F466 U+1F467' to love.sh",delay:50},
+		{head:"<font color='Silver'>写入👦 👧成功!</font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"join family code to love.sh",delay:50},
+		{head:"<font color='Red'>加入错误,🏠需要条件!!</font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"add happiness",delay:100},
+		{head:"<font color='Cyan'>添加💑完成! </font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"run love.sh ",delay:100},
+		{head:"<font color='Red'>运行失败!条件不够!</font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"add eternal love",delay:50},
+		{head:"<font color='Red'>添加❤️完成!</font>",text:" ",delay:100},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"build love.sh code",delay:50},
+		{head:"<font color='Cyan'>构建代码 </font>",text:"👦❤️👧 => 🏠",delay:40},
+		{head:"<font color='Cyan'>编译代码 </font>",text:"[=================>] 100%",delay:40},
+		{head:"<font color='Cyan'>💖💖💖💖💖💖💖💖💖💖💖💖💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💎💎💎💖💖💖💖💎💎💎💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💎💎💎💎💎💖💖💎💎💎💎💎💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💎💎💎💎💎💎💎💎💎💎💎💎💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💎💎💎💎💎💎💎💎💎💎💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💖💎💎💎👦👧💎💎💎💖💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💖💖💎💎💎💎💎💎💖💖💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💖💖💖💎💎💎💎💖💖💖💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💖💖💖💖💎💎💖💖💖💖💖💖</font>",text:"",delay:40},
+		{head:"<font color='Cyan'>💖💖💖💖💖💖💖💖💖💖💖💖💖💖</font>",text:"",delay:40},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"💌",delay:100},
+		{head:"<font color='Silver'>[~ ]# </font>",text:"load letter",delay:50},
+		{head:"<font color='Cyan'>加载信件</font>",text:"[=================>] 100%",delay:100},
 		/*{head:"<font color='#00FFFF'>[root@liting ~]# </font>",text:"finished",delay:20,heart:" "},*/
 	]
 	var VueTyperPlugin = window.VueTyper.default;
@@ -273,9 +286,9 @@
 			scene.innerHTML=scene.innerHTML + "<div class='snow'>🤎</div>";
 		}
 	}
-	navigator.geolocation.getCurrentPosition(function(position){
+	/*navigator.geolocation.getCurrentPosition(function(position){
 		console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
-	});
+	});*/
   </script>
   
 
