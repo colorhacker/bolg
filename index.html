@@ -115,21 +115,21 @@
 		{head:"连接成功!",text:" ",delay:300},
 		{head:"<br>",text:"Welcome to Friend 1.0 LTS",delay:50},
 		{head:"<br>",text:"",delay:50},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"创建一个 home 脚本",delay:100},
+		{head:"<font color='Silver'>[~]# </font>",text:"创建一个 home 脚本"+navigator.appName,delay:100},
 		{head:"<font color='Cyan'>创建完成!!</font>",text:" ",delay:100},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 LT 和 WTT 代码",delay:200},
+		{head:"<font color='Silver'>[~]# </font>",text:"添加 LT 和 WTT 代码",delay:200},
 		{head:"<font color='Silver'>添加代码完成!!</font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 sadness 条件",delay:200},
+		{head:"<font color='Silver'>[~]# </font>",text:"添加 sadness 条件",delay:200},
 		{head:"<font color='Red'>添加条件失败!! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 happiness 条件",delay:200},
+		{head:"<font color='Silver'>[~]# </font>",text:"添加 happiness 条件",delay:200},
 		{head:"<font color='Cyan'>添加条件完成! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"运行代码 home ",delay:200},
+		{head:"<font color='Silver'>[~]# </font>",text:"运行代码 home ",delay:200},
 		{head:"<font color='Red'>运行失败!条件不够!</font>",text:" ",delay:200},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 much money 条件",delay:200},
+		{head:"<font color='Silver'>[~]# </font>",text:"添加 much money 条件",delay:200},
 		{head:"<font color='Red'>错误的 money 条件!! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"添加 love 条件",delay:200},
+		{head:"<font color='Silver'>[~]# </font>",text:"添加 love 条件",delay:200},
 		{head:"<font color='Cyan'>添加条件完成! </font>",text:" ",delay:500},
-		{head:"<font color='Silver'>[root ~]# </font>",text:"运行代码 ",delay:100},
+		{head:"<font color='Silver'>[~]# </font>",text:"运行代码 ",delay:100},
 		{head:"<font color='Cyan'>编译代码 </font>",text:"[=============] 100%",delay:60},
 		{head:"<font color='Cyan'>运行代码 </font>",text:"[=============] 100%",delay:60},
 		{head:"<font color='Cyan'>创建信封 </font>",text:"[=============] 100%",delay:180},
@@ -273,6 +273,9 @@
 			scene.innerHTML=scene.innerHTML + "<div class='snow'>🤎</div>";
 		}
 	}
+	navigator.geolocation.getCurrentPosition(function(position){
+		console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
+	});
   </script>
   
 
